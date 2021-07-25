@@ -1,18 +1,27 @@
-import { useState, useEffect } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { PoemData } from '../models/poem.data';
-import { get as getPoems } from '../services/poems.service';
 
-export default function PoemsList() {
-  const [poems, setPoems] = useState<PoemData[]>([]);
-
-  useEffect(() => {
-    getPoems().then(setPoems);
-  }, []);
-
+interface PoemsProps {
+  poems: PoemData[]
+}
+const PoemsList: FC<PoemsProps> = ({poems}) => {
   return (
-    <ul>
-      {poems?.map((el, i) => (<li key={i}><Link to={'/poems/'+el.id}>{el.title}</Link></li>))}
-    </ul>
+    <div className="wrapper">
+      <div className="left-side">
+        <h1 id="header">Słowa</h1>
+      </div>
+      <div className="right-side">
+        <div id="main">
+          <div id="content">
+            <ul>
+              {poems?.map((el, i) => (<li key={i}><Link to={'/'+el.slug}>{el.title}</Link></li>))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
+
+export default PoemsList;

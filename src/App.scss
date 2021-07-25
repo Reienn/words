@@ -1,139 +1,194 @@
-@import  url("https://fonts.googleapis.com/css?family=Poiret+One|Didact+Gothic|Quicksand:300,400&display=swap>");
+@import url("https://fonts.googleapis.com/css?family=Poiret+One|Didact+Gothic|Quicksand:300,400&display=swap>");
+
+$body-color: #434343;
+$body-bg: #ececec;
+$link-color: lighten($body-color, 10%);
+$link-hover-color: lighten($body-color, 30%);
 
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-image: url(assets/bg-layer-0.svg);
-  color: rgb(61, 65, 61);
+  background: $body-bg;
+  color: $body-color;
   font-family: 'Didact Gothic', Helvetica, Arial, sans-serif;
   font-size: 1.1em;
-  overflow-x: hidden;
 }
 * {
   box-sizing: border-box;
 }
 a {
   text-decoration: none;
-  color: #EFF4EB;
+  color: $link-color;
   &:hover {
-    color: rgb(175, 175, 175);
+    color: $link-hover-color;
   }
 }
-body, .bg-layer {
-  background-position: center center;
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-}
-#wrapper {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-.bg-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  transition: all .3s ease-out;
-  &:nth-child(1) {
-    background-image: url(assets/bg-layer-1.svg);
-  }
-  &:nth-child(2) {
-    background-image: url(assets/bg-layer-2.svg);
-  }
-  &:nth-child(3) {
-    background-image: url(assets/bg-layer-3.svg);
-  }
-  &:nth-child(4) {
-    background-image: url(assets/bg-layer-4.svg);
-    height: 105vh;
-  }
-}
-
-#header{
-  position: absolute;
-  top: 10vh;
-  width: 100vw;
-  text-align: center;
-  font-weight: normal;
-  font-family: 'Poiret One', Helvetica, Arial, sans-serif;
-  font-size: 15vw;
-  text-transform: uppercase;
-  letter-spacing: 5vw;
-  color: rgba(255, 255, 255, 0.9);
-  z-index: 10;
-}
-#main {
-  position: absolute;
-  top: 105vh;
-  width: 100vw;
-  padding: 2em 2em 5em;
-  background-color: #3B595D;
-  color: #EFF4EB;
-}
-#content {
-  h2 {
-    text-align: center;
-    font-weight: normal;
-    font-size: 2em;
-    font-family: 'Quicksand', Helvetica, Arial, sans-serif;
-    font-weight: 300;
-  }
-  p {
-    text-align: center;
-  }
-  ul {
-    list-style-type: none;
-    text-align: center;
-    padding: 0;
-    font-size: 1.3em;
-  }
-  li {
-    margin-bottom: 5px;
-  }
-}
-
-
-#buttons {
-  text-align: center;
-  margin: 40px 0 0;
-  a {
-    color: rgba(239, 244, 235, 0.5);
-    border: 1px solid rgba(239, 244, 235, 0.5);
-    border-radius: 20px 0 20px 0;
-    padding: 10px 15px 12px;
-    margin: 10px;
-    outline: none;
-    background: none;
-    cursor: pointer;
-    font-family: 'Quicksand', Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    font-size: 1em;
-    min-width: 120px;
-    vertical-align: middle;
-    &:hover {
-      color: rgba(239, 244, 235, 0.9);
-      border-color: rgba(239, 244, 235, 0.9);
-      transition: all .5s;
-    }
-  }
-}
-
 #footer {
   position: fixed;
   bottom: 0;
-  padding: 10px;
-  color: #5e7a7e;
-  a {
-    text-decoration: none;
-    color: #5e7a7e;
-    &:hover {
-      color: #6d8f94
+  width: 100%;
+  text-align: center;
+  padding: .75rem;
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1);
+  background-color: $body-bg;
+  font-size: 1rem;
+}
+.wrapper {
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  max-width: 1400px;
+  background: $body-bg;
+  overflow-x: hidden;
+  padding-bottom: 60px;
+  .left-side, .right-side {
+    max-height: 100%;
+    width: 50%;
+    flex-grow: 1;
+    min-width: 500px;
+  }
+  .left-side {
+    padding: 5vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 600px;
+    h1 {
+      background: $body-color;
+      width: 80%;
+      padding: 1rem;
+      text-align: center;
+      color: $body-bg;
+      font-size: 4rem;
+      text-transform: uppercase;
+      font-weight: normal;
+      font-family: 'Poiret One', Helvetica, Arial, sans-serif;
+      letter-spacing: 1rem;
+      outline: 3px solid $body-color;
+      outline-offset: 10px;
     }
+    h2 {
+      width: 80%;
+      text-align: center;
+      border: 4px solid $body-color;
+      padding: .8rem;
+      margin: 0 0 2rem;
+    }
+    .poem-image {
+      width: 30vh;
+      height: 40vh;
+      border-radius: 50%;
+      margin-bottom: auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 0 0 30px 30px $body-bg inset;
+      position: relative;
+      // &:after {
+      //   position: absolute;
+      //   display: block;
+      //   top: 0;
+      //   left: 0;
+      //   content: '';
+      //   width: 60%;
+      //   height: 60%;
+      //   border-radius: 50%;
+      //   left: 50%;
+      //   top: 50%;
+      //   transform: translate(-50%, -50%);
+      //   backdrop-filter: grayscale(100);
+      // }
+    }
+    .home-link {
+      text-transform: uppercase;
+      padding: 1rem;
+      margin-bottom: auto;
+      font-size: 1.3rem;
+      letter-spacing: 1rem;
+    }
+  }
+  .right-side {
+    padding: 4% 5%;
+    display: flex;
+    flex-direction: column;
+    #main {
+      height: 100%;
+    }
+    #content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      overflow-y: auto;
+      max-width: 100vw;
+      margin: 0 auto;
+    }
+    ul {
+      list-style-type: none;
+      text-align: center;
+      padding: 0;
+      font-size: 1.3em;
+    }
+    .poem-text {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    .buttons {
+      gap: 1rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 10%;
+      .button {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    background: darken($body-bg, 5%);
+  }
+  .wrapper {
+    height: 100vh;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+    padding-bottom: 0;
+    .left-side, .right-side {
+      min-width: 500px;
+    }
+    .left-side {
+      background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 85%, rgba(0,0,0,.2) 100%);
+      outline: 15px $body-color solid;
+      outline-offset: -50px;
+      padding-bottom: 7rem;
+      max-height: 100%;
+      .poem-image {
+        height: 70%;
+        width: 70%;
+      }
+    }
+    .right-side {
+      background: linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 85%, rgba(0,0,0,.2) 100%);
+    }
+  }
+  #footer {
+    position: absolute;
+    bottom: 60px;
+    width: 50%;
+    left: 0;
+    text-align: center;
+    background: none;
+    box-shadow: none;
   }
 }
 
@@ -142,10 +197,11 @@ body, .bg-layer {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: darken($body-bg, 10%);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(61, 65, 61);
+  background-color: darken($body-bg, 4%);
+  border-radius: 5px;
 }
