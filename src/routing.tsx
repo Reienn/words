@@ -15,8 +15,8 @@ export default function Routing() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/"><Poems poems={poems} /></Route>
-        <Route exact path="/:slug" children={<Poem poems={poems} />} />
+        <Route exact path="/words"><Poems poems={poems} /></Route>
+        <Route exact path="/words/:slug" children={<Poem poems={poems} />} />
       </Switch>
     </Router>
   );
