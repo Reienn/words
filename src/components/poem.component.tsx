@@ -19,7 +19,7 @@ const Poem: FC<PoemProps> = ({ poems }) => {
       poem &&
       <>
         <div className="left-side">
-          <div className="home-link"><Link to={'/'}>słowa</Link></div>
+          <div className="home-link"><Link to={'/words'}>słowa</Link></div>
           <h2 id="header">{poem.title}</h2>
           <div className="poem-image" style={{ backgroundImage: `url(${poem.image})` }}></div>
         </div>
