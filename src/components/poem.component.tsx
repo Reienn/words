@@ -30,9 +30,9 @@ const Poem: FC<PoemProps> = ({ poems }) => {
             </div>
           </div>
           <div className="buttons">
-            <Link to={'/' + (prev?.slug)} title={prev.title} className="button"> &#8249; </Link>
+            <Link to={'/words/' + (prev?.slug)} title={prev.title} className="button"> &#8249; </Link>
             <span>{poemIndex + 1}</span>
-            <Link to={'/' + (next?.slug)} title={next.title} className="button"> &#8250; </Link>
+            <Link to={'/words/' + (next?.slug)} title={next.title} className="button"> &#8250; </Link>
           </div>
         </div>
       </>
