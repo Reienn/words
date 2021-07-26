@@ -16,7 +16,7 @@ const PoemsList: FC<PoemsProps> = ({poems}) => {
         <div id="main">
           <div id="content">
             <ul>
-              {poems?.map((el, i) => (<li key={i}><Link to={'/words/'+el.slug}>{el.title}</Link></li>))}
+              {poems?.map((el, i) => (<li key={i}><Link to={'/'+el.slug}>{el.title}</Link></li>))}
             </ul>
           </div>
         </div>

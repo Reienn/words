@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import Poems from './components/poems-list.component';
 import Poem from './components/poem.component';
 import { useEffect, useState } from 'react';
@@ -13,10 +13,10 @@ export default function Routing() {
   }, []);
 
   return (
-    <Router>
+    <Router basename="/words">
       <Switch>
-        <Route exact path="/words"><Poems poems={poems} /></Route>
-        <Route exact path="/words/:slug" children={<Poem poems={poems} />} />
+        <Route exact path="/"><Poems poems={poems} /></Route>
+        <Route exact path="/:slug" children={<Poem poems={poems} />} />
       </Switch>
     </Router>
   );
