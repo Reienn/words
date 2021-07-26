@@ -13,7 +13,7 @@ export default function Routing() {
   }, []);
 
   return (
-    <Router basename="/words">
+    <Router>
       <Switch>
         <Route exact path="/"><Poems poems={poems} /></Route>
         <Route exact path="/:slug" children={<Poem poems={poems} />} />
