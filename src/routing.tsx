@@ -1,22 +1,22 @@
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import Poems from './components/poems-list.component';
-import Poem from './components/poem.component';
+import Entries from './components/entries-list.component';
+import Entry from './components/entry.component';
 import { useEffect, useState } from 'react';
-import { PoemData } from './models/poem.data';
-import { get as getPoems } from './services/poems.service';
+import { EntryData } from './models/entry.data';
+import { get as getEntries } from './services/entries.service';
 
 export default function Routing() {
-  const [poems, setPoems] = useState<PoemData[]>([]);
+  const [entries, setEntries] = useState<EntryData[]>([]);
 
   useEffect(() => {
-    getPoems().then(setPoems);
+    getEntries().then(setEntries);
   }, []);
 
   return (
     <Router>
       <Switch>
-        <Route exact path="/"><Poems poems={poems} /></Route>
-        <Route exact path="/:slug" children={<Poem poems={poems} />} />
+        <Route exact path="/"><Entries entries={entries} /></Route>
+        <Route exact path="/:slug" children={<Entry entries={entries} />} />
       </Switch>
     </Router>
   );
