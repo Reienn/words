@@ -20,5 +20,5 @@ export async function fetch(id: string): Promise<EntryData | null> {
 async function _init() {
   const db = firebase.firestore();
   const querySnapshot = await db.collection('poems').orderBy('created', 'desc').get();
-  entries = querySnapshot?.docs.map((doc) => ({id: doc.id, ...doc.data()} as EntryData));
+  entries = querySnapshot?.docs.map((doc) => ({id: doc.id, ...doc.data()} as EntryData)).sort((a, b) => a.type.localeCompare(b.type));
 }

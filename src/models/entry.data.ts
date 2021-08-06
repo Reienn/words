@@ -1,4 +1,4 @@
-enum EntryType {
+export enum EntryType {
   Poem = 'poem',
   Story = 'story'
 }

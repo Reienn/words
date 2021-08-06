@@ -1,11 +1,27 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { EntryData } from '../models/entry.data';
+import { EntryData, EntryType } from '../models/entry.data';
 
 interface EntriesListProps {
   entries: EntryData[]
 }
 const EntriesList: FC<EntriesListProps> = ({entries}) => {
+  const poems: EntryData[] = [];
+  const stories: EntryData[] = [];
+
+  entries.forEach(entry => {
+    switch (entry.type) {
+      case EntryType.Poem:
+        poems.push(entry);
+        break;
+      case EntryType.Story:
+        stories.push(entry);
+        break;
+      default:
+        break;
+    }
+  })
+
   return (
     <div className="wrapper">
       <div className="left-side">
@@ -15,8 +31,13 @@ const EntriesList: FC<EntriesListProps> = ({entries}) => {
       <div className="right-side">
         <div id="main">
           <div id="content">
+            <h2>Poezja</h2>
             <ul>
-              {entries?.map((el, i) => (<li key={i}><Link to={'/'+el.slug}>{el.title}</Link></li>))}
+              {poems?.map((el, i) => (<li key={i}><Link to={'/'+el.slug}>{el.title}</Link></li>))}
+            </ul>
+            <h2>Proza</h2>
+            <ul>
+              {stories?.map((el, i) => (<li key={i}><Link to={'/'+el.slug}>{el.title}</Link></li>))}
             </ul>
           </div>
         </div>
