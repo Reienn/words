@@ -136,12 +136,13 @@ a {
     ul {
       list-style-type: none;
       text-align: center;
-      padding: 0;
+      padding: 0 0 1.5rem;
       font-size: 1.3em;
       margin: 0;
       flex: 1;
       overflow-x: auto;
       width: 100%;
+      mask-image: linear-gradient(#000 85%, transparent 100%);
     }
     .entry-text {
       flex-grow: 1;
