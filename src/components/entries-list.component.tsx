@@ -26,7 +26,7 @@ const EntriesList: FC<EntriesListProps> = ({entries}) => {
     <div className="wrapper">
       <div className="left-side">
         <h1 id="header">Słowa</h1>
-        <div className="entry-image" style={{ backgroundImage: `url(https://live.staticflickr.com/8096/8516514956_40bc1873f1_c.jpg)` }}></div>
+        <div className="entry-image" style={{ backgroundImage: `url(https://live.staticflickr.com/8459/7995927080_2d64aa9088_c.jpg)` }}></div>
       </div>
       <div className="right-side">
         <div id="main">
