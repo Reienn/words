@@ -207,6 +207,119 @@ a {
     box-shadow: none;
   }
 }
+.editor {
+  flex-direction: column;
+  padding: 3% 3% 10%;
+  h2 {
+    padding-left: 10px;
+    margin-top: 0;
+  }
+  ul {
+    list-style: none;
+    mask-image: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 10px;
+      border: 1px solid rgba($body-color, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+      background-color: lighten($body-bg, 5%);
+      div {
+        display: flex;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+      label {
+        display: inline-block;
+        width: 100px;
+        margin-top: 5px;
+      }
+      input, textarea, select {
+        flex: 1;
+        min-width: 200px;
+        padding: 10px;
+        border: 1px solid rgba($body-color, 0.2);
+        color: $body-color;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        background: white;
+        &:focus {
+          outline: 1px solid rgba($body-color, 0.4);
+        }
+      }
+      textarea {
+        height: 200px;
+      }
+      option {
+        padding: 10px;
+        text-indent: 5px;
+        line-height: 20px;
+      }
+    }
+  }
+  .save-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+    button {
+      border: none;
+      background-color: $body-bg;
+      color: $body-color;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  div {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    input {
+      border: 1px solid rgba($body-color, 0.2);
+      color: $body-color;
+      padding: 10px;
+      border-radius: 5px;
+      width: 100%;
+      &:focus {
+        outline: 1px solid rgba($body-color, 0.4);
+      }
+    }
+  }
+  button {
+    margin-left: auto;
+    border: none;
+    background-color: $body-color;
+    color: $body-bg;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+}
+.logout-button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  border: none;
+  background-color: $body-color;
+  color: $body-bg;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
 
 ::-webkit-scrollbar {
   width: 10px;
