@@ -36,7 +36,7 @@ const EditEntry: FC<EditEntryProps> = ({ entry, changed }) => {
       <h3 className={`edit-title ${!formData.id ? 'add-title' : ''}`} onClick={() => setCollapsed(!collapsed)}>
         <span className={`arrow-icon ${collapsed ? 'right' : 'down'}`}/>
         {formData.title || 'Dodaj nowy'}
-        {formData.id && <button className="removeButton" onClick={e => {e.stopPropagation(); onRemove();}}>Usuń</button>}
+        {formData.id && <button className="remove-button" onClick={e => {e.stopPropagation(); onRemove();}}>&#10005;</button>}
       </h3>
       {!collapsed && <div className="entry-form">
         <div>
