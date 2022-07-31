@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { EntryData } from '../models/entry.data';
 import EditEntry from './edit-entry.component';
 import firebase from '../firebase';
@@ -6,16 +6,22 @@ import firebase from '../firebase';
 const auth = firebase.auth();
 
 interface EditListProps {
-  entries: EntryData[]
+  entries: EntryData[],
+  changed: () => void,
 }
-const EditList: FC<EditListProps> = ({ entries }) => {
+const EditList: FC<EditListProps> = ({ entries, changed }) => {
   const [login, setLogin] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [user, setUser] = useState<firebase.User | null>();
+  const [editEntries, setEditEntries] = useState<(Partial<EntryData>)[]>([]);
 
   auth.onAuthStateChanged((currentUser) => {
     setUser(currentUser);
   });
+
+  useEffect(() => {
+    entries && setEditEntries([{}, ...entries]);
+  }, [entries])
 
   const signIn = () => {
     if (!(login && password)) { return; }
@@ -29,7 +35,7 @@ const EditList: FC<EditListProps> = ({ entries }) => {
   };
 
   return (
-    <div className="wrapper editor">
+    <div className="editor">
       {!user && <div className="login-form">
         <div>
           <label>Login:</label> <input type="text" onChange={e => setLogin(e.target.value)} />
@@ -43,9 +49,9 @@ const EditList: FC<EditListProps> = ({ entries }) => {
         <h2>Edytor</h2>
         <button className="logout-button" onClick={signOut}>Wyloguj</button>
         <ul>
-          {entries?.map((el, i) => (
-            <li key={i}>
-              <EditEntry entry={el} />
+          {editEntries.map((el, i) => (
+            <li key={el.id || i}>
+              <EditEntry entry={el} changed={changed} />
             </li>))}
         </ul>
       </>

@@ -10,13 +10,17 @@ export default function Routing() {
   const [entries, setEntries] = useState<EntryData[]>([]);
 
   useEffect(() => {
-    getEntries().then(setEntries);
+    getData();
   }, []);
+
+  const getData = (cache = true) => {
+    getEntries(cache).then(res => setEntries([...res]));
+  }
 
   return (
     <Router>
       <Switch>
-        <Route exact path="/edit"><EditList entries={entries} /></Route>
+        <Route exact path="/edit"><EditList entries={entries} changed={() => getData(false)} /></Route>
         <Route exact path="/"><Entries entries={entries} /></Route>
         <Route exact path="/:slug" children={<Entry entries={entries} />} />
       </Switch>

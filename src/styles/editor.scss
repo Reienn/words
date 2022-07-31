@@ -1,0 +1,140 @@
+.editor {
+  flex-direction: column;
+  padding: 3%;
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: $body-bg;
+  z-index: 100;
+  position: relative;
+  h2 {
+    padding-left: 10px;
+    margin-top: 0;
+  }
+  ul {
+    list-style: none;
+    mask-image: none !important;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 10px;
+      border: 1px solid rgba($body-color, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+      background-color: lighten($body-bg, 5%);
+      .edit-title {
+        margin: 0;
+        cursor: pointer;
+        &.add-title {
+          color: lighten($body-color, 30%);
+          .arrow-icon {
+            border-color: lighten($body-color, 30%);
+          }
+        }
+        .arrow-icon {
+          border: solid $body-color;
+          border-width: 0 3px 3px 0;
+          display: inline-block;
+          padding: 3px;
+          margin: 0 15px 2px 0;
+          &.right {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+          }
+          &.down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+          }
+        }
+        .removeButton {
+          float: right;
+          @extend .btn;
+        }
+      }
+      .entry-form {
+        margin-top: 20px;
+        div {
+          display: flex;
+          margin-top: 10px;
+          flex-wrap: wrap;
+        }
+      }
+      label {
+        display: inline-block;
+        width: 100px;
+        margin-top: 5px;
+      }
+      input, textarea, select {
+        flex: 1;
+        min-width: 200px;
+        padding: 10px;
+        border: 1px solid rgba($body-color, 0.2);
+        color: $body-color;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        background: white;
+        font-family: Helvetica, Arial, sans-serif;
+        &:focus {
+          outline: 1px solid rgba($body-color, 0.4);
+        }
+      }
+      textarea {
+        height: 200px;
+      }
+      option {
+        padding: 10px;
+        text-indent: 5px;
+        line-height: 20px;
+      }
+    }
+  }
+  .save-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: right;
+    button {
+      border: none;
+      background-color: $body-bg;
+      color: $body-color;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  div {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    input {
+      border: 1px solid rgba($body-color, 0.2);
+      color: $body-color;
+      padding: 10px;
+      border-radius: 5px;
+      width: 100%;
+      &:focus {
+        outline: 1px solid rgba($body-color, 0.4);
+      }
+    }
+  }
+  button {
+    margin-left: auto;
+    @extend .btn;
+  }
+}
+.logout-button {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  @extend .btn;
+}
