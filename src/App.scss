@@ -95,13 +95,16 @@ a {
     .entry-image {
       width: 30vh;
       height: 40vh;
-      border-radius: 50%;
       margin-bottom: auto;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: cover;
-      box-shadow: 0 0 20px 20px $body-bg inset;
       position: relative;
+      background-size: contain;
+      &:not(.svg-image) {
+        background-size: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 20px 20px $body-bg inset;
+      }
       // &:after {
       //   position: absolute;
       //   display: block;

@@ -8,7 +8,7 @@ function App() {
       <Routing />
       <div id="footer">
         &copy;{new Date().getFullYear()} <a href="https://www.facebook.com/anna.chotoborska" target="_blank" rel="noreferrer">Reien</a>.
-        Grafiki: <a href="https://www.flickr.com/photos/biodivlibrary/" target="_blank" rel="noreferrer">BHL</a>
+        Grafiki: Reien, <a href="https://www.flickr.com/photos/biodivlibrary/" target="_blank" rel="noreferrer">BHL</a>
       </div>
     </div>
   );

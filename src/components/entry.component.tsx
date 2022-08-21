@@ -21,7 +21,7 @@ const Entry: FC<EntryProps> = ({ entries }) => {
         <div className="left-side">
           <div className="home-link"><Link to={'/'}>słowa</Link></div>
           <h2 id="header">{entry.title}</h2>
-          <div className="entry-image" style={{ backgroundImage: `url(${entry.image})` }}></div>
+          <div className={`entry-image ${entry.image?.includes('svg') ? 'svg-image' : ''}`} style={{ backgroundImage: `url(${entry.image})` }}></div>
         </div>
         <div className="right-side">
           <div id="main">
