@@ -61,7 +61,6 @@ a {
     max-height: 100%;
     width: 50%;
     flex-grow: 1;
-    min-width: 500px;
   }
   .left-side {
     padding: 5vh;
@@ -74,6 +73,7 @@ a {
     h1 {
       background: $body-color;
       width: 80%;
+      min-width: 300px;
       padding: 1rem;
       text-align: center;
       color: $body-bg;
@@ -93,8 +93,8 @@ a {
       margin: 0 0 2rem;
     }
     .entry-image {
-      width: 30vh;
-      height: 40vh;
+      width: 40vh;
+      height: 50vh;
       margin-bottom: auto;
       background-repeat: no-repeat;
       background-position: center;
@@ -120,6 +120,15 @@ a {
       //   backdrop-filter: grayscale(100);
       // }
     }
+    .subtitle {
+      margin: 20px 0;
+      text-align: center;
+      opacity: 0.7;
+      letter-spacing: 0.5px;
+      span {
+        white-space: nowrap;
+      }
+    }
     .home-link {
       text-transform: uppercase;
       padding: 1rem;
@@ -132,6 +141,7 @@ a {
     padding: 3rem 4rem;
     display: flex;
     flex-direction: column;
+    min-width: 500px;
     #main {
       flex: auto;
       overflow-x: auto;
@@ -179,7 +189,16 @@ a {
     }
   }
 }
-
+@media only screen and (max-width: 1000px) {
+  .wrapper {
+    .left-side {
+      padding: 0 5%;
+    }
+    .right-side {
+      padding-top: 0;
+    }
+  }
+}
 @media only screen and (min-width: 1000px) {
   body {
     background: darken($body-bg, 5%);
