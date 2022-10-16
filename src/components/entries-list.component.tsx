@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { EntryData, EntryType } from '../models/entry.data';
 
+const homepageImageUrl = 'https://firebasestorage.googleapis.com/v0/b/words-portfolio.appspot.com/o/homepage.svg?alt=media&token=bfeae678-629c-40a0-ba3b-d6a3d67d9edc';
+
 interface EntriesListProps {
   entries: EntryData[]
 }
@@ -26,7 +28,7 @@ const EntriesList: FC<EntriesListProps> = ({entries}) => {
     <div className="wrapper">
       <div className="left-side">
         <h1 id="header">Słowa</h1>
-        <div className="entry-image" style={{ backgroundImage: `url(https://live.staticflickr.com/8459/7995927080_2d64aa9088_c.jpg)` }}></div>
+        <div className="entry-image svg-image main-image" style={{ backgroundImage: `url(${homepageImageUrl})` }}></div>
       </div>
       <div className="right-side">
         <div id="main">
