@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { EntryData, EntryType } from '../models/entry.data';
 
@@ -10,6 +10,10 @@ interface EntriesListProps {
 const EntriesList: FC<EntriesListProps> = ({entries}) => {
   const poems: EntryData[] = [];
   const stories: EntryData[] = [];
+
+  useEffect(() => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }, []);
 
   entries.forEach(entry => {
     switch (entry.type) {

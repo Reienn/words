@@ -193,9 +193,31 @@ a {
   .wrapper {
     .left-side {
       padding: 0 5%;
+      &.entry-page-left-side {
+        padding: 70px 0 5%;
+      }
+      .home-link {
+        position: fixed;
+        top: 0;
+        background: $body-bg;
+        z-index: 10;
+        width: 100vw;
+        text-align: center;
+        box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+      }
     }
     .right-side {
       padding-top: 0;
+      .buttons {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        padding: 0 10% 45px;
+        background: $body-bg;
+        background: linear-gradient(180deg, transparent 0%, $body-bg 10%);
+      }
     }
   }
 }

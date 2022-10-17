@@ -22,6 +22,10 @@ const Entry: FC<EntryProps> = ({ entries }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }, [entry]);
+
   const onKeyUp = (ev: KeyboardEvent) => {
     ev.key === 'ArrowLeft' && prevBtn?.current?.click();
     ev.key === 'ArrowRight' && nextBtn?.current?.click();
@@ -31,7 +35,7 @@ const Entry: FC<EntryProps> = ({ entries }) => {
     <>{
       entry &&
       <>
-        <div className="left-side">
+        <div className="left-side entry-page-left-side">
           <div className="home-link"><Link to={'/'}>słowa</Link></div>
           <h2 id="header">{entry.title}</h2>
           <div className={`entry-image ${entry.image?.includes('svg') ? 'svg-image' : ''}`} style={{ backgroundImage: `url(${entry.image})` }}></div>
