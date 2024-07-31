@@ -35,6 +35,9 @@ a {
   font-size: 0.9rem;
   cursor: pointer;
 }
+#root {
+  overflow: hidden;
+}
 #footer {
   position: fixed;
   bottom: 0;
@@ -209,6 +212,8 @@ a {
     }
     .right-side {
       padding-top: 0;
+      padding-left: 0;
+      padding-right: 0;
       .buttons {
         position: fixed;
         bottom: 0;
@@ -217,6 +222,9 @@ a {
         padding: 0 10% 45px;
         background: $body-bg;
         background: linear-gradient(180deg, transparent 0%, $body-bg 10%);
+      }
+      #content {
+        margin: 0;
       }
     }
   }
