@@ -5,8 +5,6 @@ $body-bg: #ececec;
 $link-color: lighten($body-color, 10%);
 $link-hover-color: lighten($body-color, 30%);
 
-@import './styles/editor';
-
 body {
   margin: 0;
   padding: 0;

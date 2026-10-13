@@ -1,54 +1,16 @@
-import firebase from '../firebase';
-import { EntryData } from '../models/entry.data';
+import writings from '../data/writings.json';
+import { EntryData, EntryType } from '../models/entry.data';
 
-let db: firebase.firestore.Firestore;
-let entries: EntryData[];
+const typeOrder = [EntryType.Poem, EntryType.Story];
 
-export async function get(cache = true): Promise<EntryData[]> {
-  if (!entries) {
-    await _init();
-  }
-  if (!cache) {
-    await getEntries();
-  }
+const entries: EntryData[] = (writings as EntryData[])
+  .slice()
+  .sort((a, b) => typeOrder.indexOf(a.type) - typeOrder.indexOf(b.type) || b.created.localeCompare(a.created));
+
+export function get(): EntryData[] {
   return entries;
 }
 
-export async function fetch(id: string): Promise<EntryData | null> {
-  if (!entries) {
-    await _init();
-  }
-  return entries?.find(el => el.id === id) || null;
-}
-
-export async function save(entry: Partial<EntryData>): Promise<void> {
-  if (!db) {
-    await _init();
-  }
-  if (entry.id) {
-    return db.collection('poems').doc(entry.id).update(entry);
-  }
-  const newEntry = {
-    created: firebase.firestore.FieldValue.serverTimestamp(),
-    ...entry
-  };
-  return db.collection('poems').doc().set(newEntry);
-}
-
-export async function remove(id: string): Promise<void> {
-  if (!id) { return; }
-  if (!db) {
-    await _init();
-  }
-  return db.collection('poems').doc(id).delete();
-}
-
-async function _init() {
-  db = firebase.firestore();
-  await getEntries();
-}
-
-async function getEntries() {
-  const querySnapshot = await db.collection('poems').orderBy('created', 'desc').get();
-  entries = querySnapshot?.docs.map((doc) => ({id: doc.id, ...doc.data()} as EntryData)).sort((a, b) => a.type.localeCompare(b.type));
+export function imageUrl(image: string): string {
+  return /^https?:\/\//.test(image) ? image : `${process.env.PUBLIC_URL}/images/${image}`;
 }

@@ -4,7 +4,6 @@ export enum EntryType {
 }
 
 export interface EntryData {
-  id: string;
   slug: string;
   title: string;
   content: string;

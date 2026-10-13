@@ -2,6 +2,7 @@ import { FC, useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { EntryData } from '../models/entry.data';
 import sanitizeHtml from 'sanitize-html';
+import { imageUrl } from '../services/entries.service';
 
 interface EntryProps {
   entries: EntryData[]
@@ -38,7 +39,7 @@ const Entry: FC<EntryProps> = ({ entries }) => {
         <div className="left-side entry-page-left-side">
           <div className="home-link"><Link to={'/'}>słowa</Link></div>
           <h2 id="header">{entry.title}</h2>
-          <div className={`entry-image ${entry.image?.includes('svg') ? 'svg-image' : ''}`} style={{ backgroundImage: `url(${entry.image})` }}></div>
+          <div className={`entry-image ${entry.image?.includes('svg') ? 'svg-image' : ''}`} style={{ backgroundImage: `url(${imageUrl(entry.image)})` }}></div>
         </div>
         <div className="right-side">
           <div id="main">
