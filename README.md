@@ -32,7 +32,8 @@ and push to `master` (it can be done directly in the GitHub web editor).
 ## Deployment
 
 Every push to `master` builds the site and publishes it to the `gh-pages` branch
-(`.github/workflows/deploy.yml`). Manual deploy is still possible with `npm run deploy`.
+(`.github/workflows/deploy.yml`). To redeploy without a change, run the **Deploy**
+workflow manually from the Actions tab.
 
 ## Development
 

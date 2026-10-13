@@ -11,8 +11,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "vitest run",
-    "deploy": "npm run build && gh-pages -d dist"
+    "test": "vitest run"
   },
   "homepage": "https://reienn.github.io/words",
   "type": "module",
@@ -24,7 +23,6 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
-    "gh-pages": "^6.3.0",
     "jsdom": "^29.1.1",
     "sass": "^1.105.1",
     "typescript": "^7.0.2",
