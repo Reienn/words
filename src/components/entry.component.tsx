@@ -1,7 +1,6 @@
 import { FC, useEffect, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router';
 import { EntryData } from '../models/entry.data';
-import sanitizeHtml from 'sanitize-html';
 import { imageUrl } from '../services/entries.service';
 
 interface EntryProps {
@@ -9,7 +8,7 @@ interface EntryProps {
 }
 
 const Entry: FC<EntryProps> = ({ entries }) => {
-  const { slug } = useParams() as { slug: string };
+  const { slug } = useParams();
   const entryIndex = entries.findIndex(el => el.slug === slug);
   const entry = entries[entryIndex];
   const next = entries[entryIndex < entries.length - 1 ? entryIndex + 1 : 0];
@@ -25,6 +24,9 @@ const Entry: FC<EntryProps> = ({ entries }) => {
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'smooth'});
+    if (entry) {
+      document.title = `${entry.title} – Słowa`;
+    }
   }, [entry]);
 
   const onKeyUp = (ev: KeyboardEvent) => {
@@ -44,7 +46,7 @@ const Entry: FC<EntryProps> = ({ entries }) => {
         <div className="right-side">
           <div id="main">
             <div id="content">
-              <div className="entry-text" dangerouslySetInnerHTML={{ __html: sanitizeHtml(entry.content) }}></div>
+              <div className="entry-text" dangerouslySetInnerHTML={{ __html: entry.content }}></div>
             </div>
           </div>
           <div className="buttons">

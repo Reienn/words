@@ -12,5 +12,5 @@ export function get(): EntryData[] {
 }
 
 export function imageUrl(image: string): string {
-  return /^https?:\/\//.test(image) ? image : `${process.env.PUBLIC_URL}/images/${image}`;
+  return /^https?:\/\//.test(image) ? image : `${import.meta.env.BASE_URL}images/${image}`;
 }

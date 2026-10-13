@@ -2,7 +2,7 @@
 
 Personal writings portfolio — https://reienn.github.io/words/
 
-All content lives in this repository, no backend required.
+All content lives in this repository, no backend required. Built with Vite, React and React Router.
 
 ## Content
 
@@ -36,12 +36,22 @@ Every push to `master` builds the site and publishes it to the `gh-pages` branch
 
 ## Development
 
-Requires Node 16 (see `.nvmrc`).
+Requires Node 22+ (see `.nvmrc`).
 
 ```sh
 npm ci
-npm start
+npm run dev       # dev server at http://localhost:5173/words/
+npm test
+npm run build     # production build in dist/
+npm run preview   # serve the production build
 ```
+
+### URLs
+
+Each writing has its own URL, e.g. `/words/bezmiary-bezwladu`. GitHub Pages has no
+URL rewrites, so the build writes `dist/<slug>/index.html` for every writing (with its
+own `<title>`) plus a `404.html` fallback. Old links like `/words/#/slug` are
+redirected to the new form on load.
 
 ### Image migration
 

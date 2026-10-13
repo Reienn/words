@@ -19,15 +19,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          # react-scripts 4 and node-sass 6 require Node 16
-          node-version: 16
+          node-version-file: .nvmrc
           cache: npm
       - run: npm ci
       - run: npm test
-        env:
-          CI: true
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist

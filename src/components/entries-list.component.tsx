@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { EntryData, EntryType } from '../models/entry.data';
 import { imageUrl } from '../services/entries.service';
 
@@ -14,6 +14,7 @@ const EntriesList: FC<EntriesListProps> = ({entries}) => {
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'smooth'});
+    document.title = 'Słowa';
   }, []);
 
   entries.forEach(entry => {
