@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Słowa
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal writings portfolio — https://reienn.github.io/words/
 
-## Available Scripts
+All content lives in this repository, no backend required. Built with Vite, React and React Router.
 
-In the project directory, you can run:
+## Content
 
-### `npm start`
+- **Writings:** `src/data/writings.json` — an array of entries:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  ```json
+  {
+    "slug": "url-of-the-entry",
+    "title": "Title",
+    "type": "poem",
+    "created": "2024-01-31T12:00:00Z",
+    "image": "url-of-the-entry.jpg",
+    "content": "First line<br>second line<br><br>Next stanza"
+  }
+  ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  - `type` is `poem` (Poezja) or `story` (Proza).
+  - `content` is HTML (`<br>`, `<p>`, `<i>`, `<h3>` are used).
+  - Within each type, entries are listed newest first by `created`.
+- **Images:** `image` is either a file name in `public/images/` (the SVG illustrations,
+  `homepage.svg` is the home page one) or a full `https://` URL (the Flickr photos).
+  SVG images are displayed without the photo filter.
 
-### `npm test`
+To add a writing: add an image to `public/images/` (or use an image URL), add an entry to `writings.json`
+and push to `master` (it can be done directly in the GitHub web editor).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployment
 
-### `npm run build`
+Every push to `master` builds the site and publishes it to the `gh-pages` branch
+(`.github/workflows/deploy.yml`). To redeploy without a change, run the **Deploy**
+workflow manually from the Actions tab.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Development
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Requires Node 22+ (see `.nvmrc`).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+npm ci
+npm run dev       # dev server at http://localhost:5173/words/
+npm test
+npm run build     # production build in dist/
+npm run preview   # serve the production build
+```
 
-### `npm run eject`
+### URLs
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Each writing has its own URL, e.g. `/words/bezmiary-bezwladu`. GitHub Pages has no
+URL rewrites, so the build writes `dist/<slug>/index.html` for every writing (with its
+own `<title>`) plus a `404.html` fallback. Old links like `/words/#/slug` are
+redirected to the new form on load.

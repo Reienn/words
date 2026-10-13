@@ -1,8 +1,9 @@
 import { FC, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { EntryData, EntryType } from '../models/entry.data';
+import { imageUrl } from '../services/entries.service';
 
-const HOMEPAGE_IMAGE_URL = 'https://firebasestorage.googleapis.com/v0/b/words-portfolio.appspot.com/o/homepage.svg?alt=media&token=bfeae678-629c-40a0-ba3b-d6a3d67d9edc';
+const HOMEPAGE_IMAGE_URL = imageUrl('homepage.svg');
 
 interface EntriesListProps {
   entries: EntryData[]
@@ -13,6 +14,7 @@ const EntriesList: FC<EntriesListProps> = ({entries}) => {
 
   useEffect(() => {
     window.scrollTo({top: 0, behavior: 'smooth'});
+    document.title = 'Słowa';
   }, []);
 
   entries.forEach(entry => {
