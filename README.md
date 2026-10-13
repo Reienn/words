@@ -22,11 +22,11 @@ All content lives in this repository, no backend required. Built with Vite, Reac
   - `type` is `poem` (Poezja) or `story` (Proza).
   - `content` is HTML (`<br>`, `<p>`, `<i>`, `<h3>` are used).
   - Within each type, entries are listed newest first by `created`.
-- **Images:** `public/images/` — `image` is a file name in that folder
-  (a full `https://` URL also works). `homepage.svg` is the home page illustration.
+- **Images:** `image` is either a file name in `public/images/` (the SVG illustrations,
+  `homepage.svg` is the home page one) or a full `https://` URL (the Flickr photos).
   SVG images are displayed without the photo filter.
 
-To add a writing: add an image to `public/images/`, add an entry to `writings.json`
+To add a writing: add an image to `public/images/` (or use an image URL), add an entry to `writings.json`
 and push to `master` (it can be done directly in the GitHub web editor).
 
 ## Deployment
@@ -53,12 +53,3 @@ Each writing has its own URL, e.g. `/words/bezmiary-bezwladu`. GitHub Pages has 
 URL rewrites, so the build writes `dist/<slug>/index.html` for every writing (with its
 own `<title>`) plus a `404.html` fallback. Old links like `/words/#/slug` are
 redirected to the new form on load.
-
-### Image migration
-
-`scripts/download-images.js` downloads the original images listed in
-`scripts/image-sources.json` into `public/images/` (existing files are skipped):
-
-```sh
-node scripts/download-images.js
-```
