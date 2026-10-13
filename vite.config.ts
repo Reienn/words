@@ -23,11 +23,16 @@ function writingPages(): Plugin {
     },
     closeBundle() {
       const html = fs.readFileSync(path.join(outDir, 'index.html'), 'utf-8');
+      const slugs = new Set<string>();
       for (const { slug, title } of writings) {
+        if (!/^[a-z0-9-]+$/.test(slug) || ['assets', 'images'].includes(slug) || slugs.has(slug)) {
+          throw new Error(`Invalid or duplicate slug in writings.json: "${slug}"`);
+        }
+        slugs.add(slug);
         const pageTitle = `${escapeHtml(title)} – ${SITE_TITLE}`;
         const page = html
-          .replace(/<title>.*<\/title>/, `<title>${pageTitle}</title>`)
-          .replace(/(<meta property="og:title" content=")[^"]*/, `$1${pageTitle}`);
+          .replace(/<title>.*<\/title>/, () => `<title>${pageTitle}</title>`)
+          .replace(/(<meta property="og:title" content=")[^"]*/, (_, prefix) => prefix + pageTitle);
         fs.mkdirSync(path.join(outDir, slug), { recursive: true });
         fs.writeFileSync(path.join(outDir, slug, 'index.html'), page);
       }
@@ -39,6 +44,11 @@ function writingPages(): Plugin {
 export default defineConfig({
   base: '/words/',
   plugins: [react(), writingPages()],
+  build: {
+    // Keep the responsive layout working on older iOS Safari
+    target: ['es2020', 'safari14'],
+    cssTarget: ['safari14'],
+  },
   css: {
     preprocessorOptions: {
       scss: {

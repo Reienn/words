@@ -2,11 +2,9 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.scss';
 import App from './App';
+import { legacyHashRedirect } from './legacy-hash-redirect';
 
-// Redirect old hash URLs (/words/#/slug) to /words/slug
-if (window.location.hash.startsWith('#/')) {
-  window.history.replaceState(null, '', import.meta.env.BASE_URL + window.location.hash.slice(2));
-}
+legacyHashRedirect(window.location, window.history, import.meta.env.BASE_URL);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

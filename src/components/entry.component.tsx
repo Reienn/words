@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from 'react';
-import { Link, useParams } from 'react-router';
+import { Link, Navigate, useParams } from 'react-router';
 import { EntryData } from '../models/entry.data';
 import { imageUrl } from '../services/entries.service';
 
@@ -32,6 +32,10 @@ const Entry: FC<EntryProps> = ({ entries }) => {
   const onKeyUp = (ev: KeyboardEvent) => {
     ev.key === 'ArrowLeft' && prevBtn?.current?.click();
     ev.key === 'ArrowRight' && nextBtn?.current?.click();
+  }
+
+  if (!entry) {
+    return <Navigate to="/" replace />;
   }
 
   return (

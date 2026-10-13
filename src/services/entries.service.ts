@@ -5,7 +5,8 @@ const typeOrder = [EntryType.Poem, EntryType.Story];
 
 const entries: EntryData[] = (writings as EntryData[])
   .slice()
-  .sort((a, b) => typeOrder.indexOf(a.type) - typeOrder.indexOf(b.type) || b.created.localeCompare(a.created));
+  // Stable sort: entries with the same date keep their order from writings.json
+  .sort((a, b) => typeOrder.indexOf(a.type) - typeOrder.indexOf(b.type) || Date.parse(b.created) - Date.parse(a.created));
 
 export function get(): EntryData[] {
   return entries;
